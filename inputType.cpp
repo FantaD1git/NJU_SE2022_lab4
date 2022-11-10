@@ -1,30 +1,4 @@
-#pragma once
-#include<iostream>
-#include<fstream>
-#include<cstring>
-#include<vector>
-#include<utility>
-#include<sys/types.h>
-#include<dirent.h>
 #include"inputType.h"
-#include"programPair.h"
-using namespace std;
-class inputProgram{
-    string path;
-    vector<string> all_files;
-    vector<programPair> program_pairs;
-    vector<inputType> input_types;
-public:
-    void inputPath();
-    void getFiles();
-    void getStdin();
-    void createPairs();
-};
-/*
-programPair::programPair(string a, string b){
-    Pair = make_pair(a,b);
-    ifEqual = 0;
-}
 
 inputType::inputType(string t, int l, int h){
     TYPE = t;
@@ -52,4 +26,3 @@ string inputType::outPut(){
     }    
     return s;
 }
-*/
