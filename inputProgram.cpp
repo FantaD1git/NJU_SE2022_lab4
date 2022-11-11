@@ -3,6 +3,9 @@ using namespace std;
 
 void inputProgram::inputPath(){
     cin >> path;
+    IN.getFiles();
+    IN.getStdin();
+    IN.createPairs();
 }
 
 void inputProgram::getFiles(){
@@ -69,11 +72,9 @@ void inputProgram::createPairs(){
         }
     }
 }
-
+/*
 int main(){
     inputProgram IN;
     IN.inputPath();
-    IN.getFiles();
-    IN.getStdin();
-    IN.createPairs();
 }
+*/
