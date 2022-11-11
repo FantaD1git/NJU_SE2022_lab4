@@ -12,13 +12,12 @@ using namespace std;
 class inputProgram{
     string path;
     vector<string> all_files;
-    vector<programPair> program_pairs;
-    vector<inputType> input_types;
 public:
-    void inputPath();
+    inputProgram(string p);
+    void setInputPath(string p);
     void getFiles();
-    void getStdin();
-    void createPairs();
+    void getStdin(vector<inputType>& input_types);
+    void createPairs(vector<programPair>& program_pairs);
 };
 /*
 programPair::programPair(string a, string b){

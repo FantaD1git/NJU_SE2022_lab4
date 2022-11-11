@@ -1,11 +1,15 @@
 #include "inputProgram.h"
 using namespace std;
 
-void inputProgram::inputPath(){
-    cin >> path;
+inputProgram::inputProgram(string p){
+    path = p;
     IN.getFiles();
-    IN.getStdin();
-    IN.createPairs();
+}
+
+void inputProgram::setInputPath(string p){
+    //cin >> path;
+    path = p;
+    IN.getFiles();
 }
 
 void inputProgram::getFiles(){
@@ -24,7 +28,7 @@ void inputProgram::getFiles(){
     closedir(dirp);
 }
 
-void inputProgram::getStdin(){
+void inputProgram::getStdin(vector<inputType>& input_types){
     vector<string>::iterator it;
     for(it = all_files.begin(); it != all_files.end(); it++){
         if(*it == "stdin_format.txt"){
@@ -61,7 +65,7 @@ void inputProgram::getStdin(){
     in_file.close();
 }
 
-void inputProgram::createPairs(){
+void inputProgram::createPairs(vector<programPair>& program_pairs){
     vector<string>::iterator it;
     vector<string>::iterator _it;
     for(it = all_files.begin(); it != all_files.end(); it++){
