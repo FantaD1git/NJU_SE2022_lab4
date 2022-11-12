@@ -8,7 +8,6 @@ inputType::inputType(string t, int l, int h){
 
 string inputType::outPut(){
     string s;
-    srand((unsigned)time(NULL));
     if(TYPE == "int"){
         int r = (rand() % (high - low + 1)) + low;
         s = to_string(r);

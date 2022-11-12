@@ -1,15 +1,9 @@
 #include "inputProgram.h"
 using namespace std;
 
-inputProgram::inputProgram(string p){
-    path = p;
-    IN.getFiles();
-}
-
 void inputProgram::setInputPath(string p){
-    //cin >> path;
     path = p;
-    IN.getFiles();
+    getFiles();
 }
 
 void inputProgram::getFiles(){
@@ -38,7 +32,10 @@ void inputProgram::getStdin(vector<inputType>& input_types){
     }
     string stdinPath = path + "/stdin_format.txt";
     ifstream in_file(stdinPath.c_str(), ios::in);
-    if(!in_file) exit(-1);
+    if(!in_file) {
+        cout << "Open stdin_format.txt Error." << endl;
+        exit(-1);
+    }
     string iType;
     in_file >> iType;
     while(!in_file.fail()){
@@ -70,15 +67,11 @@ void inputProgram::createPairs(vector<programPair>& program_pairs){
     vector<string>::iterator _it;
     for(it = all_files.begin(); it != all_files.end(); it++){
         for(_it = it + 1; _it != all_files.end(); _it++){
-            programPair p(*it, *_it);
+            string a = path + "/" + *it;
+            string b = path + "/" + *_it;
+            programPair p(a, b);
             program_pairs.push_back(p);
-            //cout << *it << " " << *_it << endl;
+            //cout << a << " " << b << endl;
         }
     }
 }
-/*
-int main(){
-    inputProgram IN;
-    IN.inputPath();
-}
-*/
