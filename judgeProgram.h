@@ -15,5 +15,4 @@ public:
     void inputPath();
     void summonInput();
     void judgeAll();
-    void outputCSV();
 };

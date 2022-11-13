@@ -8,4 +8,5 @@ int main(){
     J.inputPath();
     J.summonInput();
     J.judgeAll();
+    cout << "Judging complete!" << endl;
 }

@@ -11,4 +11,4 @@ inputType.o: inputType.cpp inputType.h
 programPair.o: programPair.cpp programPair.h
 	g++ -g -c programPair.cpp
 clean:
-	rm -f *.o *.out i_txt/*.txt o_txt_a/*.txt o_txt_b/*.txt 
+	rm -f *.o *.out i_txt/*.txt o_txt_a/*.txt o_txt_b/*.txt main

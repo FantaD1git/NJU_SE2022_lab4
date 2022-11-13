@@ -9,17 +9,23 @@ programPair::programPair(string a, string b){
 
 void programPair::judgeSelf(){    
     string cmd;    
+    cmd = "g++ " + Pair.first + " -o programA.out";
+    if(system(cmd.c_str()) != 0){
+        cout << "ProgramPair.first compile error." << endl;
+        exit(-1);
+    }
+    cmd = "g++ " + Pair.second + " -o programB.out";
+    if(system(cmd.c_str()) != 0){
+        cout << "ProgramPair.second compile error." << endl;
+        exit(-1);
+    }
     for(int i = 0; i < 10; i++){
         //summon output
             //summon a
-        cmd = "g++ " + Pair.first;
-        if(system(cmd.c_str()) != 0)continue;
-        cmd = "./a.out <i_txt/input_" + to_string(i) + ".txt >o_txt_a/output_" + to_string(i) + "_a.txt";
+        cmd = "./programA.out <i_txt/input_" + to_string(i) + ".txt >o_txt_a/output_" + to_string(i) + "_a.txt";
         if(system(cmd.c_str()) != 0)continue;
             //summon b
-        cmd = "g++ " + Pair.second;
-        if(system(cmd.c_str()) != 0)continue;
-        cmd = "./a.out <i_txt/input_" + to_string(i) + ".txt >o_txt_b/output_" + to_string(i) + "_b.txt";
+        cmd = "./programB.out <i_txt/input_" + to_string(i) + ".txt >o_txt_b/output_" + to_string(i) + "_b.txt";
         if(system(cmd.c_str()) != 0)continue;
         
         //judge output
@@ -28,10 +34,12 @@ void programPair::judgeSelf(){
         string a = readFileIntoString(o_a);
         string b = readFileIntoString(o_b);
         if(a != b){
+            system("rm -f *.out");
             ifEqual = false;
             return;
         }
     }
+    system("rm -f *.out");
     ifEqual = true;
 }
 
